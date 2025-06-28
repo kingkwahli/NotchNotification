@@ -1,12 +1,13 @@
-# NotchNotification
+# NotchNotification Plus
 
-Display notifications through your device's notch area.
+Display notifications through the MacBook notch area.
 
 The code has been refactored from [NotchDrop](https://github.com/Lakr233/NotchDrop) and modified to better suit the current use case.
+</br>
+I added some other notification types to the original, such as loading and importing/downloading, as well as fixing the notification icon on the Message mode being cut off.
 
-## Preview
-
-![Preview GIF](./Example/demo.gif)
+## Demo Application
+![Demo](./Example/example.gif)
 
 ## Platforms
 
@@ -30,6 +31,18 @@ To display a notification, use the following code:
 
 ```swift
 NotchNotification.present(message: message)
+```
+
+To display a loading/syncing notification, use the following code:
+
+```swift
+NotchNotification.present(loading: message)
+```
+
+To display a downloading/importing notification, use the following code:
+
+```swift
+NotchNotification.present(import: message)
 ```
 
 For presenting an error notification with a custom interval:
@@ -58,3 +71,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ---
 
 © 2024 Lakr Aream. All Rights Reserved.
+© 2025 kingkwahli at NaazimCo
