@@ -59,9 +59,9 @@ struct NotchNotificationDemoApp: SwiftUI.App {
                 .bold()
             TextField("Notification Text (e.g. Hello World!)", text: $message)
                 .frame(minWidth: 300)
-            TextField("SF Symbol Name (e.g. circle.fill)", text: $sfsymbol)
+            TextField("SF Symbol Name (e.g. circle.fill) | for Custom mode only", text: $sfsymbol)
                 .frame(minWidth: 300)
-            Toggle("Enable Text Area (under notch) | works only on Message", isOn: $textStatus)
+            Toggle("Enable Text Area (under notch) | for Message mode only", isOn: $textStatus)
                 .toggleStyle(.checkbox)
             HStack {
                 Group {

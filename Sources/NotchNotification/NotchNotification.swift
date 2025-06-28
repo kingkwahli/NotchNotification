@@ -61,13 +61,6 @@ public enum NotchNotification {
                 interval: interval
             )
         }
-    // public static func present(custom: String, interval: TimeInterval = defaultInterval) {
-      //      present(
-    //            trailingView: Image(systemName: "sfsymbolicon").foregroundStyle(.red),
-    //            bodyView: Text(download),
-    //            interval: interval
-    //        )
-    //    }
     public static func present(error: String, interval: TimeInterval = defaultInterval) {
         present(
             trailingView: Image(systemName: "xmark").foregroundStyle(.red),
