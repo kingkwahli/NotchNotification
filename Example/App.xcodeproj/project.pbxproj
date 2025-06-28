@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5019F5932C9C39D700BB67C6 /* NotchNotification in Frameworks */ = {isa = PBXBuildFile; productRef = 5019F5922C9C39D700BB67C6 /* NotchNotification */; };
-		EBF4CC312E0D922600BF65A0 /* NotchNotification in Frameworks */ = {isa = PBXBuildFile; productRef = EBF4CC302E0D922600BF65A0 /* NotchNotification */; };
+		EB9158A42E0E319000A65D11 /* NotchNotification in Frameworks */ = {isa = PBXBuildFile; productRef = EB9158A32E0E319000A65D11 /* NotchNotification */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBF4CC312E0D922600BF65A0 /* NotchNotification in Frameworks */,
+				EB9158A42E0E319000A65D11 /* NotchNotification in Frameworks */,
 				5019F5932C9C39D700BB67C6 /* NotchNotification in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,7 +81,7 @@
 			name = App;
 			packageProductDependencies = (
 				5019F5922C9C39D700BB67C6 /* NotchNotification */,
-				EBF4CC302E0D922600BF65A0 /* NotchNotification */,
+				EB9158A32E0E319000A65D11 /* NotchNotification */,
 			);
 			productName = NotchNotification;
 			productReference = 5019F54D2C9C38D700BB67C6 /* App.app */;
@@ -95,7 +95,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					5019F54C2C9C38D700BB67C6 = {
 						CreatedOnToolsVersion = 16.0;
@@ -112,7 +112,7 @@
 			mainGroup = 5019F5442C9C38D700BB67C6;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				EBF4CC2F2E0D922600BF65A0 /* XCLocalSwiftPackageReference "../../NotchNotification" */,
+				EB9158A22E0E319000A65D11 /* XCLocalSwiftPackageReference "../../NotchNotification" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5019F54E2C9C38D700BB67C6 /* Products */;
@@ -179,9 +179,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = FZQ8P6KL5L;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -205,7 +203,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -245,9 +242,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = FZQ8P6KL5L;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -264,7 +259,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -278,11 +272,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = FZQ8P6KL5L;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "NotchNotification Demo";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -306,11 +299,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = FZQ8P6KL5L;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "NotchNotification Demo";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -349,7 +341,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		EBF4CC2F2E0D922600BF65A0 /* XCLocalSwiftPackageReference "../../NotchNotification" */ = {
+		EB9158A22E0E319000A65D11 /* XCLocalSwiftPackageReference "../../NotchNotification" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../../NotchNotification;
 		};
@@ -360,7 +352,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = NotchNotification;
 		};
-		EBF4CC302E0D922600BF65A0 /* NotchNotification */ = {
+		EB9158A32E0E319000A65D11 /* NotchNotification */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = NotchNotification;
 		};
