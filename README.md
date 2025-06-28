@@ -4,7 +4,8 @@ Display notifications through the MacBook notch area.
 
 The code has been refactored from [NotchDrop](https://github.com/Lakr233/NotchDrop) and modified to better suit the current use case.
 </br>
-I added some other notification types to the original, such as loading and importing/downloading, as well as fixing the notification icon on the Message mode being cut off.
+</br>
+This project was originally by [Lakr233](https://github.com/Lakr233/), I added some other notification types to the original, such as loading/syncing and importing/downloading, as well as fixing the notification icon on the Message mode being cut off.
 
 ## Demo Application
 ![Demo](./Example/example.gif)
