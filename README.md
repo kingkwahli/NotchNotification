@@ -1,6 +1,5 @@
 # NotchNotification Plus
-
-Display notifications through the MacBook notch area.
+## Display notifications through the MacBook notch area.
 
 The code has been refactored from [NotchDrop](https://github.com/Lakr233/NotchDrop) and modified to better suit the current use case.
 </br>
