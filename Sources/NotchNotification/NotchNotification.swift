@@ -43,7 +43,6 @@ public enum NotchNotification {
             interval: interval
         )
     }
-
     public static func present(error: Error, interval: TimeInterval = defaultInterval) {
         present(error: error.localizedDescription, interval: interval)
     }
@@ -69,6 +68,47 @@ public enum NotchNotification {
         )
     }
 
+    public static func present(success: String, interval: TimeInterval = defaultInterval) {
+        present(
+            trailingView: Image(systemName: "checkmark").foregroundStyle(.green),
+            bodyView: Text(success),
+            interval: interval
+        )
+    }
+    public static func present(camera: String, interval: TimeInterval = defaultInterval) {
+        present(
+            leadingView: Rectangle().hidden().frame(width: 4),
+            trailingView: Rectangle().hidden().frame(width: 4).overlay(Circle().frame(width: 4, height: 4).foregroundStyle(.green)),
+            bodyView: EmptyView().frame(width: 0, height: 0),
+            interval: interval,
+            animated: false
+        )
+    }
+    public static func present(microphone: String, interval: TimeInterval = defaultInterval) {
+        present(
+            leadingView: Rectangle().hidden().frame(width: 4),
+            trailingView: Rectangle().hidden().frame(width: 4).overlay(Circle().frame(width: 4, height: 4).foregroundStyle(.orange)),
+            bodyView: EmptyView().frame(width: 0, height: 0),
+            interval: interval,
+            animated: false
+        )
+    }
+    public static func present(custom: String, interval: TimeInterval = defaultInterval, sfsymbol: String) {
+            present(
+                trailingView: Image(systemName: sfsymbol).foregroundStyle(.white),
+                bodyView: Text(custom),
+                interval: interval
+            )
+        }
+    public static func present(icon: String, interval: TimeInterval = defaultInterval, sfsymbol: String) {
+            present(
+                leadingView: Rectangle().hidden().frame(width: 4),
+                trailingView: Image(systemName: sfsymbol).foregroundStyle(.white),
+                bodyView: EmptyView().frame(width: 0, height: 0),
+                interval: interval,
+                animated: false
+            )
+        }
     public static func present(
         leadingView: some View = Image(systemName: "bell.fill"),
         trailingView: some View = EmptyView(),
