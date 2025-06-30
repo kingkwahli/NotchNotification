@@ -9,9 +9,7 @@ This fork includes additional notification types like loading/syncing, importing
 
 ## Demo
 
-See it in action:
-
-![Demo](./Example/example.gif)
+See it in action with the [demo app](https://github.com/kingkwahli/NotchNotification-Demo/) or with the DemoApp.swift included in the project
 
 ## Platforms
 
