@@ -14,7 +14,7 @@ struct NotchNotificationDemoApp: SwiftUI.App {
         WindowGroup {
             panel
                 .frame(
-                    minWidth: 800, idealWidth: 800, maxWidth: 900,
+                    minWidth: 1000, idealWidth: 1000, maxWidth: 1200,
                     minHeight: 340, idealHeight: 340, maxHeight: 440,
                     alignment: .center
                 )
@@ -23,14 +23,16 @@ struct NotchNotificationDemoApp: SwiftUI.App {
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
     }
-    @State private var showPopover = false
+    @State private var showAboutPopover = false
+    @State private var showSymbolHelpPopover = false
+    @State private var showTextHelpPopover = false
     @State var message: String = ""
     @State var sfsymbol: String = ""
     @State var textStatus = true
     @State var interval: TimeInterval = 3 {
         didSet { if interval < 0 { interval = 0 } }
     }
-
+    
     var panel: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
@@ -38,72 +40,100 @@ struct NotchNotificationDemoApp: SwiftUI.App {
                     .font(.title)
                     .bold()
                 Button(action: {
-                                showPopover.toggle()
-                            }) {
-                                Image(systemName: "questionmark.circle")
-                            }
-                            .buttonStyle(.plain)
-                            .popover(isPresented: $showPopover, arrowEdge: .bottom) {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Text("About Notch Notification")
-                                        .font(.headline)
-                                    Text("Integrate your app's notifications into the MacBook notch")
-                                        .font(.subheadline)
-                                    Link("Learn more", destination: URL(string: "https://github.com/kingkwahli/NotchNotification")!)                                }
-                                .padding()
-                                .frame(width: 250)
-                            }
-                        }
+                    showAboutPopover.toggle()
+                }) {
+                    Image(systemName: "questionmark.circle")
+                }
+                .buttonStyle(.plain)
+                .popover(isPresented: $showAboutPopover, arrowEdge: .bottom) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("About Notch Notification")
+                            .font(.headline)
+                        Text("Integrate your app's notifications into the MacBook notch")
+                            .font(.subheadline)
+                        Link("Learn more", destination: URL(string: "https://github.com/kingkwahli/NotchNotification")!)                                }
+                    .padding()
+                    .frame(width: 250)
+                }
+            }
             Text("Designed by Lakr233 • Enhanced by kingkwahli")
                 .font(.caption)
                 .bold()
             TextField("Notification Text (e.g. Hello World!)", text: $message)
                 .frame(minWidth: 300)
-            TextField("SF Symbol Name (e.g. circle.fill) | for Custom mode only", text: $sfsymbol)
-                .frame(minWidth: 300)
-            Toggle("Enable Text Area (under notch) | for Message mode only", isOn: $textStatus)
-                .toggleStyle(.checkbox)
+            HStack {
+                TextField("SF Symbol Name (e.g. circle.fill)", text: $sfsymbol)
+                    .frame(minWidth: 300)
+                Button(action: {
+                    showSymbolHelpPopover.toggle()
+                }) {
+                    Image(systemName: "questionmark.circle")
+                }
+                .buttonStyle(.plain)
+                .popover(isPresented: $showSymbolHelpPopover, arrowEdge: .bottom) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("SF Symbol Help")
+                            .font(.headline)
+                        Text("Custom symbols only works on Message, Custom, and Icon Only modes")
+                            .font(.subheadline)                              }
+                    .padding()
+                    .frame(width: 250)
+                }
+                Button("Open SF Symbols") {
+                    openSFSymbolsApp()
+                }
+            }
+            HStack {
+                Toggle("Enable Text Area (below notch)", isOn: $textStatus)
+                    .toggleStyle(.checkbox)
+                Button(action: {
+                    showTextHelpPopover.toggle()
+                }) {
+                    Image(systemName: "questionmark.circle")
+                }
+                .buttonStyle(.plain)
+                .popover(isPresented: $showTextHelpPopover, arrowEdge: .bottom) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Text Area Help")
+                            .font(.headline)
+                        Text("Text Area enabling & disabling only works on Message mode")
+                        .font(.subheadline)                              }
+                    .padding()
+                    .frame(width: 250)
+                }
+            }
             HStack {
                 Group {
                     if interval <= 0 {
-                        Text("Int.")
+                        Text("0 seconds")
                     } else {
-                        Text("\(Int(interval))s")
+                        Text("\(Int(interval)) seconds")
                     }
                 }
-                .frame(width: 24, alignment: .leading)
+                .frame(width:72, alignment: .leading)
                 Button("-") { interval -= 1 }
                     .disabled(interval <= 0)
                 Button("+") { interval += 1 }
-                    .disabled(interval >= 16)
+                    .disabled(interval >= 99)
                 Spacer()
                 Button("Custom") {
-                    NotchNotification.present(
-                        trailingView: Image(systemName: sfsymbol).foregroundStyle(.white),
-                        bodyView: Text(message),
-                        interval: interval
-                    )
+                    NotchNotification.present(custom: message, interval: interval, sfsymbol: sfsymbol)
                 }
                 Button("Error") {
-                    NotchNotification.present(error: message)
-                    
+                    NotchNotification.present(error: message, interval: interval)
                 }
                 Button("Success") {
-                    NotchNotification.present(
-                        trailingView: Image(systemName: "checkmark").foregroundStyle(.green),
-                        bodyView: Text(message),
-                        interval: interval
-                    )
+                    NotchNotification.present(success: message, interval: interval)
                 }
                 Button("Loading") {
-                    NotchNotification.present(loading: message)
+                    NotchNotification.present(loading: message, interval: interval)
                 }
                 Button("Downloading") {
-                    NotchNotification.present(download: message)
+                    NotchNotification.present(download: message, interval: interval)
                 }
                 Button("Message") {
                     NotchNotification.present(
-                        trailingView: Image(systemName: "apple.logo").foregroundStyle(.black),
+                        trailingView: Image(systemName: sfsymbol).foregroundStyle(.black),
                         bodyView: textStatus
                         ? AnyView(HStack {
                             Text(message)
@@ -112,12 +142,13 @@ struct NotchNotificationDemoApp: SwiftUI.App {
                     )
                 }
                 Button("Camera") {
-                    NotchNotification.present(
-                        leadingView: Rectangle().hidden().frame(width: 4),
-                        trailingView: Rectangle().hidden().frame(width: 4).overlay(Circle().frame(width: 4, height: 4).foregroundStyle(.green)),
-                        bodyView: EmptyView().frame(width: 0, height: 0),
-                        interval: interval,
-                        animated: false
+                    NotchNotification.present(camera: message, interval: interval)
+                }
+                Button("Microphone") {
+                    NotchNotification.present(microphone: message, interval: interval)
+                }
+                Button("Icon Only") {
+                    NotchNotification.present(icon: message, interval: interval, sfsymbol: sfsymbol
                     )
                 }
             }
@@ -125,4 +156,21 @@ struct NotchNotificationDemoApp: SwiftUI.App {
         .padding(32)
     }
 }
+    func openSFSymbolsApp() {
+        let regularBundleID = "com.apple.SFSymbols"
+        let betaBundleID = "com.apple.SFSymbols-Beta"
+        let downloadURL = URL(string: "https://developer.apple.com/sf-symbols/")!
+
+        if let regularAppURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: regularBundleID) {
+            NSWorkspace.shared.open(regularAppURL)
+            return
+        }
+
+        if let betaAppURL = NSWorkspace.shared.urlForApplication(withBundleIdentifier: betaBundleID) {
+            NSWorkspace.shared.open(betaAppURL)
+            return
+        }
+
+        NSWorkspace.shared.open(downloadURL)
+    }
 
