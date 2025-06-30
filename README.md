@@ -87,7 +87,7 @@ To fully customize the notification view:
 NotchNotification.present(
     bodyView: HStack {
         Image(systemName: "hand.point.right")
-        Text(message).underline()
+        Text(message).bold()
         Image(systemName: "hand.point.left")
     },
     interval: interval
