@@ -4,7 +4,7 @@
 The code has been refactored from [NotchDrop](https://github.com/Lakr233/NotchDrop) and modified to better suit the current use case.
 </br>
 </br>
-This project was originally by [Lakr233](https://github.com/Lakr233/), I added some other notification types to the original, such as loading/syncing and importing/downloading, as well as fixing the notification icon on the Message mode being cut off.
+This project was originally by [Lakr233](https://github.com/Lakr233/), I added some other notification types to the original, such as loading/syncing and importing/downloading, easier custom SF Symbols, micrphone mode, and also fixing the notification icon on the Message mode being cut off.
 
 ## Demo Application
 ![Demo](./Example/example.gif)
@@ -43,6 +43,36 @@ To display a downloading/importing notification, use the following code:
 
 ```swift
 NotchNotification.present(import: message)
+```
+
+To display a notification with a custom symbol:
+
+```swift
+NotchNotification.present(notification: message, sfsymbol: apple.logo)
+```
+
+To display a notification with only a custom icon:
+
+```swift
+NotchNotification.present(icon: message, sfsymbol: apple.logo)
+```
+
+To display a notification with a custom icon and a custom interval:
+
+```swift
+NotchNotification.present(icon: message, sfsymbol: apple.logo, interval: 3)
+```
+
+To display a notification to indicate the camera is active:
+
+```swift
+NotchNotification.present(camera: message)
+```
+
+To display a notification to indicate the microphone is active:
+
+```swift
+NotchNotification.present(microphone: message)
 ```
 
 For presenting an error notification with a custom interval:
