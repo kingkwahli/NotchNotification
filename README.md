@@ -1,29 +1,31 @@
-# NotchNotification Plus
+# NotchNotification 
 ## Display notifications through the MacBook notch area.
 
-The code has been refactored from [NotchDrop](https://github.com/Lakr233/NotchDrop) and modified to better suit the current use case.
-</br>
-</br>
-This project was originally by [Lakr233](https://github.com/Lakr233/), I added some other notification types to the original, such as loading/syncing and importing/downloading, easier custom SF Symbols, micrphone mode, and also fixing the notification icon on the Message mode being cut off.
+NotchNotification is a refined and extended version of [NotchDrop](https://github.com/Lakr233/NotchDrop).
 
-## Demo Application
+The original project is by [Lakr233](https://github.com/Lakr233/). 
+
+This fork includes additional notification types like loading/syncing, importing/downloading, easier SF Symbols customization, microphone activity mode, and fixes for layout issues such as clipped icons in Message mode.
+
+## Demo
+
+See it in action:
+
 ![Demo](./Example/example.gif)
 
 ## Platforms
 
-NotchNotification supports all AppKit platforms and works even on devices without a notch.
+NotchNotification supports all AppKit-based macOS applications (macOS 12 or later), and gracefully falls back on devices without a physical notch.
 
-```swift
-platforms: [.macOS(.v12)],
-```
+## Installation & Usage
 
-## Usage
+### Basic Usage
 
 To add this package to your project:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Lakr233/NotchNotification.git", from: "1.1.0"),
+    .package(url: "https://github.com/kingkwahli/NotchNotification.git", from: "1.1.0"),
 ]
 ```
 
@@ -45,24 +47,6 @@ To display a downloading/importing notification, use the following code:
 NotchNotification.present(import: message)
 ```
 
-To display a notification with a custom symbol:
-
-```swift
-NotchNotification.present(notification: message, sfsymbol: apple.logo)
-```
-
-To display a notification with only a custom icon:
-
-```swift
-NotchNotification.present(icon: message, sfsymbol: apple.logo)
-```
-
-To display a notification with a custom icon and a custom interval:
-
-```swift
-NotchNotification.present(icon: message, sfsymbol: apple.logo, interval: 3)
-```
-
 To display a notification to indicate the camera is active:
 
 ```swift
@@ -81,6 +65,28 @@ For presenting an error notification with a custom interval:
 NotchNotification.present(error: error, interval: 3)
 ```
 
+### Custom Icons
+
+To display a notification with a custom symbol:
+
+```swift
+NotchNotification.present(notification: message, sfsymbol: apple.logo)
+```
+
+To display a notification with only a custom icon:
+
+```swift
+NotchNotification.present(icon: message, sfsymbol: apple.logo)
+```
+
+To display a notification with a custom icon and a custom interval:
+
+```swift
+NotchNotification.present(icon: message, sfsymbol: apple.logo, interval: 3)
+```
+
+### Advanced Customization
+
 To fully customize the notification view:
 
 ```swift
@@ -96,9 +102,9 @@ NotchNotification.present(
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for full details.
 
 ---
 
-© 2024 Lakr Aream. All Rights Reserved.
-© 2025 kingkwahli at NaazimCo
+© 2024 Lakr Aream  
+© 2025 Kwahli at NaazimCo
