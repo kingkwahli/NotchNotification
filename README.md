@@ -23,7 +23,7 @@ To add this package to your project:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/kingkwahli/NotchNotification.git", from: "2.0"),
+    .package(url: "https://github.com/kingkwahli/NotchNotification.git", from: "2.1"),
 ]
 ```
 
